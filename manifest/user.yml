@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: to-be-replaced-by-jenkins
+        image: to-be-replaced-by-pipeline
         env: 
         - name: DT_TAGS
           value: "product=sockshop"
