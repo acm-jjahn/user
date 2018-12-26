@@ -1,6 +1,10 @@
+# Visual Studio
+.vs/
+
 bin
 docker/user/bin	docker/user/bin
 vendor
+
 # Credentials
 credentials.yml
 jmeter.log
