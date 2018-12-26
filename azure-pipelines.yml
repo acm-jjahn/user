@@ -20,9 +20,6 @@ steps:
   displayName: 'Set build variables'
 
 - script: |
-    echo theTag = $theTag
-    echo theDevTag = $theDevTag
-    echo TheStageTag = $TheStageTag
     echo VERSION = $(VERSION)
     echo TAG = $(TAG)
     echo TAG_DEV = $(TAG_DEV)
@@ -53,14 +50,17 @@ steps:
 
 - script: |
     echo GOPATH=$(GOPATH)
+    go version
     cd $(System.DefaultWorkingDirectory)
     echo PWD before making dirs
     pwd
     mkdir -p src/github.com/dynatrace-sockshop/$(APP_NAME)/
     cp -R ./api src/github.com/dynatrace-sockshop/$(APP_NAME)/
+    cp -R ./db src/github.com/dynatrace-sockshop/$(APP_NAME)/
+    cp -R ./users src/github.com/dynatrace-sockshop/$(APP_NAME)/
     cp -R ./main.go src/github.com/dynatrace-sockshop/$(APP_NAME)/
     cp -R ./glide.* src/github.com/dynatrace-sockshop/$(APP_NAME)/
-    cd src/github.com/dynatrace-sockshop/$(APP_NAME)
+    cd src/github.com/dynatrace-sockshop/$(APP_NAME) && ls -lsa
     echo PWD before doing glide install
     pwd
     glide install
